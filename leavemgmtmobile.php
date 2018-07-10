@@ -5,15 +5,16 @@ class Leavemgmt extends CI_Controller
 {
     function __construct() {
         parent::__construct();
-        $this->load->model('login_model','logmodel');
-		  $this->load->model('common_model','commodel');
+        $this->load->model('login_model','logmodel'); //load model
+		  $this->load->model('common_model','commodel');    //load model
 		  $this->load->model('User_model','usermodel');
         $this->load->model('SIS_model','sismodel');
-        $this->load->model('dependrop_model','depmodel');
-        $this->load->model('university_model','unimodel');
+        //$this->load->model('dependrop_model','depmodel');
+      //  $this->load->model('university_model','unimodel');
 		  $this->load->helper('download');
         if(empty($this->session->userdata('id_user'))) {
-            $this->session->set_flashdata('flash_data', 'You don\'t have access!');
+
+          //  $this->session->set_flashdata('flash_data', 'You don\'t have access!');
 		  redirect('welcome');
         }
     }
@@ -45,7 +46,7 @@ class Leavemgmt extends CI_Controller
              					if($lat==$laf)
              					{
              					$this->session->set_flashdata("err_message", "Leave From Date and To Date can not be same...");
-                            redirect("leavemgmt/leaveapply");
+                            redirect("leavemgmt/leavemgmt(1)");
              					}
                       if(($laf1[0]==$lat1[0])&&($laf1[1]<12)&&($lat1[1]<12))
                       					{
