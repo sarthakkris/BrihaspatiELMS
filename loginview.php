@@ -29,13 +29,10 @@ $("#login").click(function(){
 	var username = $("#username").val();
 	var password = $("#password").val();
 // Checking for blank fields.
-
 	if( username =='' || password ==''){
 	$('input[type="text"],input[type="password"]').css("border","2px solid red");
 	$('input[type="text"],input[type="password"]').css("box-shadow","0 0 3px red");
 	alert("Please fill all fields!");
-
-
 	}
 	else {
       
@@ -43,9 +40,11 @@ $("#login").click(function(){
 			alert(credentials);
 		  jQuery.ajax({
 			type:"POST",
-			url :"<?php echo site_url();?>user_log/user_login_process",
+			url :"user_log/user_login_process",
+			beforeSend: function(){
+         alert("testing"); },
 			data:{"credentials" : credentials},
-			dataType:"html",
+			dataType:"json",
 				success: function(data) {
 					/*alert("kuch bhi");
 					if(data='successfull login'){*/
@@ -59,8 +58,6 @@ $("#login").click(function(){
 			//}
 				});
 		  }
-
-
 	 } );
 });
 </script>
