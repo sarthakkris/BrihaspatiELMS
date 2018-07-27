@@ -38,21 +38,31 @@ $("#login").click(function(){
       
 			var credentials = username +","+password;
 			alert(credentials);
-		  jQuery.ajax({
+		  $.ajax({
+			 url: "<?php echo base_url();?>sisindex.php/mobile/m_auth", 
 			type:"POST",
-			url :"user_log/user_login_process",
-			beforeSend: function(){
-         alert("testing"); },
+			/*beforeSend: function()
+			{
+            //alert(credentials); 
+			},*/
 			data:{"credentials" : credentials},
-			dataType:"json",
-				success: function(data) {
-					/*alert("kuch bhi");
-					if(data='successfull login'){*/
+		
+			dataType:"html",
+				success: function(data) 
+				{
+					//alert("kuch bhi");
+					/*if(data='successfull login')*/
+					
 					 alert("successful login");
-					},
-					error:function(data){
-						alert("Invalid Username or Password");
-					}
+					 
+					 window.location.assign('<?php echo base_url();?>sisindex.php/mobile/test');
+					 
+				},
+				error:function(data)
+				{	//alert(data[1]);
+					alert("Invalid Username or Password");
+					
+				}
 			//else/*(data='invalid credentials')*/{
 			//	alert('invalid email or password!');
 			//}
